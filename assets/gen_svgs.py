@@ -445,12 +445,13 @@ def character():
     OPEN = 0.2  # status window opens
     sy = 190
 
-    talk = ["I am… ACID.", "버그는 어둠 속에서 벤다.", "그림자 속에서 배포한다.", "모든 건… 계획대로다."]
-    TD = 8
+    talk = ["I am… ACID.", "버그는 어둠 속에서 벤다.", "코드 속에 숨어 코드를 사냥하는 자…",
+            "버그가 시작된다.", "오늘 밤은… 콘솔이 붉군."]
+    TD = 2 * len(talk)
     by = sy - 58
     bubbles = "".join(
         f'<g opacity="0">{visible(i * TD / len(talk), (i + 1) * TD / len(talk), TD)}'
-        f'<text x="144" y="{by + 27}" font-size="15" fill="#0f172a" text-anchor="middle" font-family="{SANS}" font-weight="700">{t}</text></g>'
+        f'<text x="144" y="{by + 26}" font-size="{min(15, 212 / text_width(t, 1)):.1f}" fill="#0f172a" text-anchor="middle" font-family="{SANS}" font-weight="700">{t}</text></g>'
         for i, t in enumerate(talk))
 
     info = [("이름", "두두 (doodoo)", 310, 150), ("칭호", "「졸업을 앞둔 전생자」", 545, 150),
@@ -526,7 +527,7 @@ def character():
     <line x1="40" y1="122" x2="{W - 40}" y2="122" stroke="#67e8f9" stroke-opacity="0.35"/>
 
     <g opacity="0">{once("opacity", 0, 1, OPEN + 0.5, 0.4)}
-      <rect x="34" y="{by}" width="220" height="40" rx="12" fill="#f8fafc"/>
+      <rect x="26" y="{by}" width="236" height="40" rx="12" fill="#f8fafc"/>
       <path d="M136 {by + 39} L144 {by + 52} L152 {by + 39} Z" fill="#f8fafc"/>
       {bubbles}
       {shadow_avatar(144, 272, 0.82)}
