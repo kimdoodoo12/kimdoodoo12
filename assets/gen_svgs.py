@@ -445,7 +445,7 @@ def character():
     OPEN = 0.2  # status window opens
     sy = 190
 
-    talk = ["I am… ACID.", "버그는 어둠 속에서 벤다.", "코드 속에 숨어 코드를 사냥하는 자…",
+    talk = ["I am… ACID.", "코드 속에 숨어 코드를 사냥하는 자…",
             "버그가 시작된다.", "오늘 밤은… 콘솔이 붉군."]
     TD = 2 * len(talk)
     by = sy - 58
