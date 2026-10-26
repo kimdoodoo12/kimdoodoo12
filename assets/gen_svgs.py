@@ -460,9 +460,9 @@ def character():
         f'<text x="{x}" y="{y}" font-size="14" font-family="{SANS}"><tspan fill="#67e8f9">{k}</tspan>'
         f'<tspan fill="#f1f5f9" font-weight="700" dx="10">{v}</tspan></text>' for k, v, x, y in info)
 
-    stats = [("체력", "HP", 100, "MAX", "#f97316"), ("집중력", "FOC", 90, "90", "#22c55e"),
-             ("디버깅", "DBG", 95, "95", "#a78bfa"), ("학습력", "LRN", 80, "80", "#38bdf8"),
-             ("언어 해독", "LANG", 70, "70", "#f472b6")]
+    stats = [("체력", "HP", 100, "MAX", "#f97316"), ("집중력", "FOC", 70, "70", "#22c55e"),
+             ("디버깅", "DBG", 80, "80", "#a78bfa"), ("학습력", "LRN", 80, "80", "#38bdf8"),
+             ("언어 해독", "LANG", 60, "60", "#f472b6")]
     BX, BW, Y0, DY = 440, 230, 200, 25
     rows = []
     for i, (label, abbr, val, shown, color) in enumerate(stats):
@@ -479,7 +479,7 @@ def character():
     rows.append(f'''
     <text x="310" y="{y + 12}" font-size="14" fill="#e2e8f0" font-family="{SANS}">약점</text>
     <text x="{BX - 10}" y="{y + 12}" font-size="11" fill="#64748b" text-anchor="end">WEAK</text>
-    <text x="{BX}" y="{y + 12}" font-size="14" font-weight="700" fill="#f87171">??? <tspan fill="#94a3b8" font-weight="400" font-family="{SANS}">아직 발견되지 않음</tspan>
+    <text x="{BX}" y="{y + 12}" font-size="14" font-weight="700" fill="#f87171">??? <tspan fill="#94a3b8" font-weight="400">404: Weakness Not Found</tspan>
       <animate attributeName="x" values="{BX};{BX + 3};{BX - 2};{BX};{BX}" keyTimes="0;0.04;0.08;0.12;1" dur="2.5s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="1;0.3;1;1" keyTimes="0;0.05;0.1;1" dur="2.5s" repeatCount="indefinite"/>
     </text>''')
