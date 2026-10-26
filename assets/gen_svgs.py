@@ -455,7 +455,7 @@ def character():
         for i, t in enumerate(talk))
 
     info = [("이름", "두두 (doodoo)", 310, 150), ("칭호", "「졸업을 앞둔 전생자」", 545, 150),
-            ("직업", "백엔드 · 데이터 모험가", 310, 176), ("레벨", "Lv. 졸업 직전", 545, 176)]
+            ("직업", "백엔드 · 데이터 모험가", 310, 176), ("레벨", "Lv. 졸업 직전 (25)", 545, 176)]
     info_svg = "".join(
         f'<text x="{x}" y="{y}" font-size="14" font-family="{SANS}"><tspan fill="#67e8f9">{k}</tspan>'
         f'<tspan fill="#f1f5f9" font-weight="700" dx="10">{v}</tspan></text>' for k, v, x, y in info)
