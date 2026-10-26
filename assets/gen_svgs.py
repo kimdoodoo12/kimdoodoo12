@@ -483,9 +483,9 @@ def character():
       <animate attributeName="opacity" values="1;0.3;1;1" keyTimes="0;0.05;0.1;1" dur="2.5s" repeatCount="indefinite"/>
     </text>''')
 
-    skills = [("혼잣말 디버깅", "중얼거리다 보면 버그 위치가 보인다"),
-              ("오래달리기", "긴 프로젝트도 페이스 유지 (졸작 7단계 파이프라인 완주)"),
-              ("담금질", "뜨겁게 흔들고 천천히 식혀서 최적해를 찾는다")]
+    skills = [("심연 탐색", "버그가 숨은 가장 깊은 곳까지 파고들어 끝내 찾아낸다"),
+              ("그림자 행군", "아무도 모르게, 그러나 끝까지 나아간다"),
+              ("불사의 심장", "몇 번을 쓰러져도 다시 일어나 끝내 완성한다")]
     sk = "".join(
         f'<text x="310" y="{386 + i * 21}" font-size="13" font-family="{SANS}">'
         f'<tspan fill="#fbbf24">◆</tspan> <tspan fill="#f1f5f9" font-weight="700">{name}</tspan>'
