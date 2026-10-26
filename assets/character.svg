@@ -94,41 +94,41 @@
       <line x1="282" y1="136" x2="282" y2="424" stroke="#1e3a5f" stroke-dasharray="4 4"/>
       <text x="310" y="150" font-size="14" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif"><tspan fill="#67e8f9">이름</tspan><tspan fill="#f1f5f9" font-weight="700" dx="10">두두 (doodoo)</tspan></text><text x="545" y="150" font-size="14" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif"><tspan fill="#67e8f9">칭호</tspan><tspan fill="#f1f5f9" font-weight="700" dx="10">「졸업을 앞둔 전생자」</tspan></text><text x="310" y="176" font-size="14" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif"><tspan fill="#67e8f9">직업</tspan><tspan fill="#f1f5f9" font-weight="700" dx="10">백엔드 · 데이터 모험가</tspan></text><text x="545" y="176" font-size="14" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif"><tspan fill="#67e8f9">레벨</tspan><tspan fill="#f1f5f9" font-weight="700" dx="10">Lv. 졸업 직전</tspan></text>
       
-    <text x="310" y="212" font-size="14" fill="#e2e8f0" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">지구력</text>
-    <text x="430" y="212" font-size="11" fill="#64748b" text-anchor="end">STA</text>
+    <text x="310" y="212" font-size="14" fill="#e2e8f0" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">체력</text>
+    <text x="430" y="212" font-size="11" fill="#64748b" text-anchor="end">HP</text>
     <rect x="440" y="200" width="230" height="13" rx="3" fill="#0b1026" stroke="#1e3a5f"/>
     <rect x="440" y="200" width="0" height="13" rx="3" fill="#f97316">
       <animate attributeName="width" from="0" to="230" begin="0.80s" dur="0.9s" fill="freeze"/>
     </rect>
     <text x="682" y="212" font-size="13" font-weight="700" fill="#f97316">MAX</text>
-    <text x="310" y="237" font-size="14" fill="#e2e8f0" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">게임</text>
-    <text x="430" y="237" font-size="11" fill="#64748b" text-anchor="end">GAME</text>
+    <text x="310" y="237" font-size="14" fill="#e2e8f0" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">집중력</text>
+    <text x="430" y="237" font-size="11" fill="#64748b" text-anchor="end">FOC</text>
     <rect x="440" y="225" width="230" height="13" rx="3" fill="#0b1026" stroke="#1e3a5f"/>
     <rect x="440" y="225" width="0" height="13" rx="3" fill="#22c55e">
       <animate attributeName="width" from="0" to="207" begin="1.00s" dur="0.9s" fill="freeze"/>
     </rect>
     <text x="682" y="237" font-size="13" font-weight="700" fill="#22c55e">90</text>
-    <text x="310" y="262" font-size="14" fill="#e2e8f0" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">영어 회화</text>
-    <text x="430" y="262" font-size="11" fill="#64748b" text-anchor="end">ENG</text>
+    <text x="310" y="262" font-size="14" fill="#e2e8f0" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">디버깅</text>
+    <text x="430" y="262" font-size="11" fill="#64748b" text-anchor="end">DBG</text>
     <rect x="440" y="250" width="230" height="13" rx="3" fill="#0b1026" stroke="#1e3a5f"/>
-    <rect x="440" y="250" width="0" height="13" rx="3" fill="#38bdf8">
-      <animate attributeName="width" from="0" to="161" begin="1.20s" dur="0.9s" fill="freeze"/>
+    <rect x="440" y="250" width="0" height="13" rx="3" fill="#a78bfa">
+      <animate attributeName="width" from="0" to="218" begin="1.20s" dur="0.9s" fill="freeze"/>
     </rect>
-    <text x="682" y="262" font-size="13" font-weight="700" fill="#38bdf8">70</text>
-    <text x="310" y="287" font-size="14" fill="#e2e8f0" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">일본어 회화</text>
-    <text x="430" y="287" font-size="11" fill="#64748b" text-anchor="end">JPN</text>
+    <text x="682" y="262" font-size="13" font-weight="700" fill="#a78bfa">95</text>
+    <text x="310" y="287" font-size="14" fill="#e2e8f0" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">학습력</text>
+    <text x="430" y="287" font-size="11" fill="#64748b" text-anchor="end">LRN</text>
     <rect x="440" y="275" width="230" height="13" rx="3" fill="#0b1026" stroke="#1e3a5f"/>
-    <rect x="440" y="275" width="0" height="13" rx="3" fill="#f472b6">
-      <animate attributeName="width" from="0" to="126" begin="1.40s" dur="0.9s" fill="freeze"/>
+    <rect x="440" y="275" width="0" height="13" rx="3" fill="#38bdf8">
+      <animate attributeName="width" from="0" to="184" begin="1.40s" dur="0.9s" fill="freeze"/>
     </rect>
-    <text x="682" y="287" font-size="13" font-weight="700" fill="#f472b6">55</text>
-    <text x="310" y="312" font-size="14" fill="#e2e8f0" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">혼잣말</text>
-    <text x="430" y="312" font-size="11" fill="#64748b" text-anchor="end">TALK</text>
+    <text x="682" y="287" font-size="13" font-weight="700" fill="#38bdf8">80</text>
+    <text x="310" y="312" font-size="14" fill="#e2e8f0" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">언어 해독</text>
+    <text x="430" y="312" font-size="11" fill="#64748b" text-anchor="end">LANG</text>
     <rect x="440" y="300" width="230" height="13" rx="3" fill="#0b1026" stroke="#1e3a5f"/>
-    <rect x="440" y="300" width="0" height="13" rx="3" fill="#a78bfa">
-      <animate attributeName="width" from="0" to="218" begin="1.60s" dur="0.9s" fill="freeze"/>
+    <rect x="440" y="300" width="0" height="13" rx="3" fill="#f472b6">
+      <animate attributeName="width" from="0" to="161" begin="1.60s" dur="0.9s" fill="freeze"/>
     </rect>
-    <text x="682" y="312" font-size="13" font-weight="700" fill="#a78bfa">95</text>
+    <text x="682" y="312" font-size="13" font-weight="700" fill="#f472b6">70</text>
     <text x="310" y="337" font-size="14" fill="#e2e8f0" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">약점</text>
     <text x="430" y="337" font-size="11" fill="#64748b" text-anchor="end">WEAK</text>
     <text x="440" y="337" font-size="14" font-weight="700" fill="#f87171">??? <tspan fill="#94a3b8" font-weight="400" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">아직 발견되지 않음</tspan>

@@ -459,9 +459,9 @@ def character():
         f'<text x="{x}" y="{y}" font-size="14" font-family="{SANS}"><tspan fill="#67e8f9">{k}</tspan>'
         f'<tspan fill="#f1f5f9" font-weight="700" dx="10">{v}</tspan></text>' for k, v, x, y in info)
 
-    stats = [("지구력", "STA", 100, "MAX", "#f97316"), ("게임", "GAME", 90, "90", "#22c55e"),
-             ("영어 회화", "ENG", 70, "70", "#38bdf8"), ("일본어 회화", "JPN", 55, "55", "#f472b6"),
-             ("혼잣말", "TALK", 95, "95", "#a78bfa")]
+    stats = [("체력", "HP", 100, "MAX", "#f97316"), ("집중력", "FOC", 90, "90", "#22c55e"),
+             ("디버깅", "DBG", 95, "95", "#a78bfa"), ("학습력", "LRN", 80, "80", "#38bdf8"),
+             ("언어 해독", "LANG", 70, "70", "#f472b6")]
     BX, BW, Y0, DY = 440, 230, 200, 25
     rows = []
     for i, (label, abbr, val, shown, color) in enumerate(stats):
