@@ -445,7 +445,7 @@ def character():
     OPEN = 0.2  # status window opens
     sy = 190
 
-    talk = ["왜 안 되지…", "아 여기구나!", "버그는 어둠 속에서 벤다.", "OK, it works!"]
+    talk = ["I am… ACID.", "버그는 어둠 속에서 벤다.", "그림자 속에서 배포한다.", "모든 건… 계획대로다."]
     TD = 8
     by = sy - 58
     bubbles = "".join(
@@ -530,7 +530,6 @@ def character():
       <path d="M136 {by + 39} L144 {by + 52} L152 {by + 39} Z" fill="#f8fafc"/>
       {bubbles}
       {shadow_avatar(144, 272, 0.82)}
-      <text x="144" y="424" font-size="13" fill="#94a3b8" text-anchor="middle" font-family="{SANS}">취미: 게임 · 영어/일본어 회화</text>
 
       <line x1="282" y1="136" x2="282" y2="{WY + WH - 20}" stroke="#1e3a5f" stroke-dasharray="4 4"/>
       {info_svg}
