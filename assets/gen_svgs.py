@@ -140,7 +140,7 @@ def header():
       <text x="{CX}" y="152" font-size="46" font-weight="900" fill="url(#gold)" filter="url(#glow)">어둠의 개발자가 되고 싶어서!</text>
     </g>
     <g opacity="0">{rise_in(FLASH + 2.4)}
-      <text x="{CX}" y="204" font-size="15" fill="#e9d5ff" letter-spacing="2">— 두두 (doodoo) —</text>
+      <text x="{CX}" y="198" font-size="17" font-weight="700" fill="#e9d5ff" letter-spacing="6" filter="url(#glow)">THE DEVELOPER IN SHADOW</text>
     </g>
   </g>
   </g>
