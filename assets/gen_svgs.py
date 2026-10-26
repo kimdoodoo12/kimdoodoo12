@@ -462,7 +462,7 @@ def character():
 
     stats = [("체력", "HP", 100, "MAX", "#f97316"), ("집중력", "FOC", 70, "70", "#22c55e"),
              ("디버깅", "DBG", 80, "80", "#a78bfa"), ("학습력", "LRN", 80, "80", "#38bdf8"),
-             ("언어 해독", "LANG", 60, "60", "#f472b6")]
+             ("다국어", "POLY", 60, "60", "#f472b6")]
     BX, BW, Y0, DY = 440, 230, 200, 25
     rows = []
     for i, (label, abbr, val, shown, color) in enumerate(stats):
