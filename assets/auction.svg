@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="800" height="320" font-family="'JetBrains Mono','D2Coding','Consolas','Menlo',monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c1917"/><stop offset="1" stop-color="#3b1d0f"/></linearGradient>
+  </defs>
+  <rect width="800" height="320" rx="18" fill="url(#bg)"/>
+  <text x="28" y="38" font-size="15" fill="#a8a29e">social-auction-platform / 이음 옥션</text>
+  <text x="28" y="62" font-size="13" fill="#78716c">첫 입찰 순간부터 24시간 · SSE 실시간 현재가 · 경매별 입찰 큐</text>
+
+  <!-- product card -->
+  <rect x="50" y="84" width="300" height="196" rx="16" fill="#292524" stroke="#44403c"/>
+  <g transform="translate(150 108)">
+    <rect x="0" y="34" width="100" height="74" rx="6" fill="#f472b6"/>
+    <rect x="-8" y="20" width="116" height="22" rx="5" fill="#ec4899"/>
+    <rect x="42" y="20" width="16" height="88" fill="#fde68a"/>
+    <path d="M50 20 C30 -6 14 8 44 20 M50 20 C70 -6 86 8 56 20" fill="none" stroke="#fde68a" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0.0000;0.1200" dur="10s" repeatCount="indefinite"/><rect x="64" y="236" width="94" height="30" rx="15" fill="#64748b" fill-opacity="0.18" stroke="#64748b"/><text x="78" y="256" font-size="15" fill="#64748b" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif" font-weight="700">경매 대기</text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.1200;0.5600" dur="10s" repeatCount="indefinite"/><rect x="64" y="236" width="117" height="30" rx="15" fill="#22c55e" fill-opacity="0.18" stroke="#22c55e"/><text x="78" y="256" font-size="15" fill="#22c55e" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif" font-weight="700">경매 진행 중</text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.5600;0.7000" dur="10s" repeatCount="indefinite"/><rect x="64" y="236" width="94" height="30" rx="15" fill="#ef4444" fill-opacity="0.18" stroke="#ef4444"/><text x="78" y="256" font-size="15" fill="#ef4444" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif" font-weight="700">마감 임박</text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1" keyTimes="0.0000;0.7000" dur="10s" repeatCount="indefinite"/><rect x="64" y="236" width="94" height="30" rx="15" fill="#eab308" fill-opacity="0.18" stroke="#eab308"/><text x="78" y="256" font-size="15" fill="#eab308" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif" font-weight="700">낙찰 완료</text></g>
+
+  <text x="400" y="104" font-size="14" fill="#a8a29e" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">현재가</text>
+  <g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0.0000;0.1200" dur="10s" repeatCount="indefinite"/><text x="400" y="150" font-size="44" font-weight="800" fill="#fde68a">10,000<tspan font-size="22" fill="#fcd34d"> 원</tspan></text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.1200;0.2000" dur="10s" repeatCount="indefinite"/><text x="400" y="150" font-size="44" font-weight="800" fill="#fde68a">11,000<tspan font-size="22" fill="#fcd34d"> 원</tspan></text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.2000;0.2900" dur="10s" repeatCount="indefinite"/><text x="400" y="150" font-size="44" font-weight="800" fill="#fde68a">13,000<tspan font-size="22" fill="#fcd34d"> 원</tspan></text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.2900;0.3800" dur="10s" repeatCount="indefinite"/><text x="400" y="150" font-size="44" font-weight="800" fill="#fde68a">15,000<tspan font-size="22" fill="#fcd34d"> 원</tspan></text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.3800;0.4800" dur="10s" repeatCount="indefinite"/><text x="400" y="150" font-size="44" font-weight="800" fill="#fde68a">18,000<tspan font-size="22" fill="#fcd34d"> 원</tspan></text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.4800;0.6100" dur="10s" repeatCount="indefinite"/><text x="400" y="150" font-size="44" font-weight="800" fill="#fde68a">21,000<tspan font-size="22" fill="#fcd34d"> 원</tspan></text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1" keyTimes="0.0000;0.6100" dur="10s" repeatCount="indefinite"/><text x="400" y="150" font-size="44" font-weight="800" fill="#fde68a">24,000<tspan font-size="22" fill="#fcd34d"> 원</tspan></text></g>
+  <text x="400" y="186" font-size="14" fill="#a8a29e" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">남은 시간</text>
+  <g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0.0000;0.1200" dur="10s" repeatCount="indefinite"/><text x="400" y="222" font-size="30" font-weight="700" fill="#94a3b8">24:00:00</text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.1200;0.2400" dur="10s" repeatCount="indefinite"/><text x="400" y="222" font-size="30" font-weight="700" fill="#e2e8f0">23:59:59</text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.2400;0.3600" dur="10s" repeatCount="indefinite"/><text x="400" y="222" font-size="30" font-weight="700" fill="#e2e8f0">17:42:10</text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.3600;0.5600" dur="10s" repeatCount="indefinite"/><text x="400" y="222" font-size="30" font-weight="700" fill="#e2e8f0">09:15:33</text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.5600;0.6400" dur="10s" repeatCount="indefinite"/><text x="400" y="222" font-size="30" font-weight="700" fill="#f87171">02:59:12</text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0.0000;0.6400;0.7000" dur="10s" repeatCount="indefinite"/><text x="400" y="222" font-size="30" font-weight="700" fill="#f87171">00:00:04</text></g><g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1" keyTimes="0.0000;0.7000" dur="10s" repeatCount="indefinite"/><text x="400" y="222" font-size="30" font-weight="700" fill="#f87171">00:00:00</text></g>
+  <g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0.0000;0.1200" dur="10s" repeatCount="indefinite"/><text x="400" y="256" font-size="13" fill="#78716c" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">첫 입찰을 기다리는 중…</text></g>
+  
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0.0000;0.1200;0.1300;0.2100;1.0000" dur="10s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -46;0 -46" keyTimes="0.0000;0.1200;0.2100;1.0000" dur="10s" repeatCount="indefinite"/>
+    <rect x="640" y="140" width="120" height="34" rx="17" fill="#22c55e"/>
+    <text x="700" y="163" font-size="16" font-weight="700" fill="#052e16" text-anchor="middle">+1,000</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0.0000;0.2000;0.2100;0.2900;1.0000" dur="10s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -46;0 -46" keyTimes="0.0000;0.2000;0.2900;1.0000" dur="10s" repeatCount="indefinite"/>
+    <rect x="640" y="140" width="120" height="34" rx="17" fill="#22c55e"/>
+    <text x="700" y="163" font-size="16" font-weight="700" fill="#052e16" text-anchor="middle">+2,000</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0.0000;0.2900;0.3000;0.3800;1.0000" dur="10s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -46;0 -46" keyTimes="0.0000;0.2900;0.3800;1.0000" dur="10s" repeatCount="indefinite"/>
+    <rect x="640" y="140" width="120" height="34" rx="17" fill="#22c55e"/>
+    <text x="700" y="163" font-size="16" font-weight="700" fill="#052e16" text-anchor="middle">+2,000</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0.0000;0.3800;0.3900;0.4700;1.0000" dur="10s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -46;0 -46" keyTimes="0.0000;0.3800;0.4700;1.0000" dur="10s" repeatCount="indefinite"/>
+    <rect x="640" y="140" width="120" height="34" rx="17" fill="#22c55e"/>
+    <text x="700" y="163" font-size="16" font-weight="700" fill="#052e16" text-anchor="middle">+3,000</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0.0000;0.4800;0.4900;0.5700;1.0000" dur="10s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -46;0 -46" keyTimes="0.0000;0.4800;0.5700;1.0000" dur="10s" repeatCount="indefinite"/>
+    <rect x="640" y="140" width="120" height="34" rx="17" fill="#22c55e"/>
+    <text x="700" y="163" font-size="16" font-weight="700" fill="#052e16" text-anchor="middle">+3,000</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0.0000;0.6100;0.6200;0.7000;1.0000" dur="10s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -46;0 -46" keyTimes="0.0000;0.6100;0.7000;1.0000" dur="10s" repeatCount="indefinite"/>
+    <rect x="640" y="140" width="120" height="34" rx="17" fill="#22c55e"/>
+    <text x="700" y="163" font-size="16" font-weight="700" fill="#052e16" text-anchor="middle">+3,000</text>
+  </g>
+
+  <!-- gavel -->
+  <g transform="translate(700 250)">
+    <g>
+      <animateTransform attributeName="transform" type="rotate" values="0;0;-35;-35;8;0" keyTimes="0.0000;0.6500;0.6800;0.7000;0.7250;1.0000" dur="10s" repeatCount="indefinite"/>
+      <rect x="-6" y="-80" width="12" height="70" rx="5" fill="#a16207" transform="rotate(-40)"/>
+      <rect x="-30" y="-108" width="60" height="30" rx="7" fill="#ca8a04" transform="rotate(-40)"/>
+    </g>
+    <rect x="-40" y="0" width="80" height="14" rx="5" fill="#57534e"/>
+  </g>
+  <g transform="translate(200 165)">
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;1" keyTimes="0.0000;0.7000;0.7250;0.7400;1.0000" dur="10s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="scale" values="0;0;1.3;1;1" keyTimes="0.0000;0.7000;0.7250;0.7400;1.0000" dur="10s" repeatCount="indefinite"/>
+      <g transform="rotate(-12)">
+        <rect x="-82" y="-36" width="164" height="72" rx="12" fill="#1c1917" fill-opacity="0.88" stroke="#ef4444" stroke-width="4"/>
+        <text x="0" y="14" font-size="40" font-weight="900" fill="#ef4444" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">낙찰!</text>
+      </g>
+    </g>
+  </g>
+</svg>
