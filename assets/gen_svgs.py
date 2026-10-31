@@ -548,20 +548,22 @@ def character():
 def funnel():
     W, H, D = 800, 360, 10
     CX, TOPY, BOTY, TOPHW, BOTHW = 290, 80, 255, 170, 40
-    gates = [(135, "① 빈도 · 불용어 필터", "6,423"), (195, "② Reddit 문맥 × LLM 판정", "3,293"),
-             (250, "③ 사람 검수", "384")]
+    gates = [(135, "① Reddit 사용량 점수화", "6,423", "매칭 29,123 → 필터 15,198 → keep"),
+             (195, "② Reddit 문맥 × LLM 판정", "3,293", "판정 통과 3,338 → 최종"),
+             (250, "③ 사람 검수", "384", "")]
 
     def hw(y):
         return TOPHW - (TOPHW - BOTHW) * (y - TOPY) / (BOTY - TOPY)
 
     poly = f"{CX - TOPHW},{TOPY} {CX + TOPHW},{TOPY} {CX + BOTHW},{BOTY} {CX - BOTHW},{BOTY}"
     gate_svg = []
-    for gy, label, num in gates:
+    for gy, label, num, sub in gates:
         gate_svg.append(
             f'<line x1="{CX - hw(gy):.0f}" y1="{gy}" x2="{CX + hw(gy):.0f}" y2="{gy}" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6 5" opacity="0.7"/>'
             f'<line x1="{CX + hw(gy) + 6:.0f}" y1="{gy}" x2="500" y2="{gy}" stroke="#475569" stroke-dasharray="2 4"/>'
             f'<text x="510" y="{gy - 4}" font-size="13" fill="#cbd5e1" font-family="{SANS}">{label}</text>'
-            f'<text x="{W - 36}" y="{gy - 2}" font-size="22" font-weight="800" fill="#fde68a" text-anchor="end">{num}</text>')
+            f'<text x="{W - 36}" y="{gy - 2}" font-size="22" font-weight="800" fill="#fde68a" text-anchor="end">{num}</text>'
+            + (f'<text x="510" y="{gy + 14}" font-size="11" fill="#64748b" font-family="{SANS}">{sub}</text>' if sub else ""))
 
     # anonymous candidates: most get filtered out at some gate
     rng = random.Random(3)
@@ -608,9 +610,9 @@ def funnel():
             f'<rect width="{w}" height="24" rx="12" fill="#22c55e"/>'
             f'<text x="{w / 2}" y="17" font-size="14" font-weight="700" fill="#052e16" text-anchor="middle">{word}</text></g>')
 
-    # "cap": every sampled context was market cap / salary cap -> dropped by the LLM gate
+    # "money": dictionary lists a slang sense, but 0 of 60 sampled contexts used it -> dropped by the LLM gate
     cs = 1.9
-    cw = 3 * 9 + 22
+    cw = 5 * 9 + 22
     g2 = gates[1][0]
     tg = cs + fall * (g2 - TOPY) / (BOTY - TOPY)
     cap_vals = (f"{CX - cw / 2:.0f} {TOPY - 26};{CX - cw / 2:.0f} {TOPY - 26};{CX - cw / 2:.0f} {g2 - 24};"
@@ -620,11 +622,11 @@ def funnel():
   <g opacity="0">{visible(cs, tg + 3.2, D)}
     <animateTransform attributeName="transform" type="translate" values="{cap_vals}" keyTimes="{cap_k}" dur="{D}s" repeatCount="indefinite"/>
     <rect width="{cw}" height="24" rx="12" fill="#ef4444"/>
-    <text x="{cw / 2}" y="17" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">cap</text>
+    <text x="{cw / 2}" y="17" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">money</text>
   </g>
   <g opacity="0">{visible(tg + 0.8, tg + 3.2, D)}
-    <text x="24" y="{g2 + 84}" font-size="12" fill="#fca5a5" font-family="{SANS}">문맥 60개 전부</text>
-    <text x="24" y="{g2 + 100}" font-size="12" fill="#fca5a5">"market cap" ✗</text>
+    <text x="24" y="{g2 + 84}" font-size="12" fill="#fca5a5" font-family="{SANS}">문맥 60개 중 슬랭 0개</text>
+    <text x="24" y="{g2 + 100}" font-size="12" fill="#fca5a5">"money" ✗ 탈락</text>
   </g>'''
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="{MONO}">
@@ -637,7 +639,8 @@ def funnel():
   <text x="28" y="58" font-size="13" fill="#5eead4" opacity="0.7" font-family="{SANS}">사전에만 있는 슬랭 말고, 진짜 쓰이는 슬랭만 골라내기</text>
 
   <polygon points="{poly}" fill="url(#fn)" stroke="#2dd4bf" stroke-width="2" stroke-linejoin="round"/>
-  <text x="510" y="{TOPY + 4}" font-size="12" fill="#64748b" font-family="{SANS}">Wiktionary 슬랭 후보 + Reddit 댓글 2개월치</text>
+  <text x="510" y="{TOPY + 4}" font-size="12" fill="#64748b" font-family="{SANS}">Wiktionary 슬랭 표제어 33,009개</text>
+  <text x="510" y="{TOPY + 20}" font-size="12" fill="#64748b" font-family="{SANS}">+ Reddit 댓글 2개월치</text>
   {"".join(gate_svg)}
   {"".join(dots)}
 
@@ -646,7 +649,7 @@ def funnel():
   {"".join(chips)}
   {cap}
 
-  <text x="28" y="{H - 14}" font-size="12" fill="#5eead4" opacity="0.75">Reservoir Sampling · gpt-4.1-nano (temp 0, JSON schema) · pytest 43 · CI 품질 게이트</text>
+  <text x="28" y="{H - 14}" font-size="12" fill="#5eead4" opacity="0.75">Reservoir Sampling · gpt-4.1-nano (temp 0, JSON mode) · pytest 43 · CI 품질 게이트</text>
 </svg>
 '''
 
