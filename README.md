@@ -16,14 +16,12 @@
 
 ## 📂 Projects
 
-<p align="center">
-  <a href="#songrush"><img src="assets/card-songrush.svg" width="49%" alt="SongRush · 애니 OP/ED 멀티플레이 퀴즈" /></a>
-  <a href="#english-inssa"><img src="assets/card-english-inssa.svg" width="49%" alt="English INSSA · 영어 슬랭 데이터 파이프라인" /></a>
-  <a href="#ieum-auction"><img src="assets/card-ieum-auction.svg" width="49%" alt="이음 옥션 · 사회적 가치 상품 경매 플랫폼" /></a>
-  <a href="#schedule"><img src="assets/card-schedule.svg" width="49%" alt="시간표 최적화 · Simulated Annealing" /></a>
-</p>
-
-<sub>카드를 누르면 아래 프로젝트 소개로 이동하고, 소개 맨 위 배지로 저장소에 갈 수 있습니다.</sub>
+| 프로젝트 | 한 줄 소개 | 형태 |
+|---|---|---|
+| [**SongRush**](#songrush) | 같은 순간에 같은 곡을 듣고 애니 제목을 맞히는 멀티플레이 게임 | 개인 · 운영 중 |
+| [**English INSSA**](#english-inssa) | 사전 슬랭 3만 개에서 실제로 쓰이는 384개를 골라낸 데이터 파이프라인 | 졸업 작품 · 파이프라인 담당 |
+| [**이음 옥션**](#ieum-auction) | 취약계층이 만든 상품을 경매로 파는 사회적 가치 플랫폼 | 팀 4명 · 팀장 |
+| [**시간표 최적화**](#schedule) | 담금질 기법으로 공강 적은 시간표 자동 생성 | 개인 |
 
 <a name="songrush"></a>
 
@@ -31,7 +29,7 @@
 
 <a href="https://github.com/kimdoodoo12/SongRushApp"><img src="https://img.shields.io/badge/GitHub-SongRushApp-181717?style=for-the-badge&logo=github" alt="저장소" /></a> <a href="https://animeopguessr.com"><img src="https://img.shields.io/badge/Live-animeopguessr.com-ff8a4c?style=for-the-badge" alt="서비스" /></a>
 
-<img src="assets/songrush.svg" width="100%" alt="레코드가 돌고, 채팅 오답 끝에 한 명이 정답을 맞혀 정답 카드가 뜨는 게임 한 판 애니메이션" />
+<img src="https://raw.githubusercontent.com/kimdoodoo12/SongRushApp/dev/docs/images/demo.gif" width="100%" alt="PC와 휴대폰이 같은 방에서 한 곡을 진행하는 실제 화면" />
 
 > 최대 8명이 같은 순간에 같은 곡을 듣고 애니 제목을 먼저 맞히는 실시간 게임 · [animeopguessr.com](https://animeopguessr.com)
 > **1인 개발 · AI 에이전트 팀(구현·검증·비평)을 직접 설계해 운영 배포까지**
@@ -54,7 +52,7 @@
 
 <a href="https://github.com/kimdoodoo12/english-inssa-data-pipeline"><img src="https://img.shields.io/badge/GitHub-english--inssa--data--pipeline-181717?style=for-the-badge&logo=github" alt="저장소" /></a>
 
-<img src="assets/funnel.svg" width="100%" alt="슬랭 후보가 필터를 거쳐 걸러지는 파이프라인 애니메이션" />
+<img src="assets/shots/inssa-screens.png" width="100%" alt="파이프라인 데이터가 쓰이는 서비스 화면: 슬랭 목록, 연습문제, AI 회화, 학습 현황" />
 
 > 사전에 등록된 슬랭 중 **실제로 쓰이는 것만** 골라 영어 학습 서비스용 데이터셋으로 만드는 파이프라인
 > 팀 졸업 작품 중 **`data_pipeline/` 전체를 단독 설계·구현**
@@ -86,7 +84,7 @@
 
 <a href="https://github.com/kimdoodoo12/social-auction-platform"><img src="https://img.shields.io/badge/GitHub-social--auction--platform-181717?style=for-the-badge&logo=github" alt="저장소" /></a>
 
-<img src="assets/auction.svg" width="100%" alt="첫 입찰부터 낙찰까지 경매 흐름 애니메이션" />
+<img src="https://raw.githubusercontent.com/kimdoodoo12/social-auction-platform/main/docs/images/bidding.gif" width="100%" alt="두 사용자가 같은 경매에 입찰하는 실제 화면" />
 
 > 장애인·사회적 약자가 만든 상품을 기관과 협약해 경매로 판매하는 서비스
 > **4인 팀 프로젝트 · 팀장**
@@ -109,13 +107,13 @@
 
 <a href="https://github.com/kimdoodoo12/schedule_optimization"><img src="https://img.shields.io/badge/GitHub-schedule__optimization-181717?style=for-the-badge&logo=github" alt="저장소" /></a>
 
-<img src="assets/annealing.svg" width="100%" alt="담금질 기법으로 최저점을 찾아가는 애니메이션" />
+<img src="assets/shots/schedule-result.png" width="100%" alt="프로그램이 실제로 만든 최적 시간표" />
 
 > 15~18학점 제약 안에서 **공강은 줄이고 하루 수업은 고르게** 배치하는 시간표 자동 생성
 
 - 겹치지 않는 랜덤 시간표에서 시작해 강의 하나를 빼고 충돌 없는 강의로 교체하며 탐색
 - 온도가 높을 때는 나쁜 해도 확률적으로 받아들여 **지역 최솟값 탈출**
-- 위 애니메이션의 공 경로도 실제 담금질 알고리즘을 돌려 나온 경로
+- 위 그림은 저장소의 강의 데이터로 프로그램을 실제로 돌려 나온 결과 시간표
 
 `Python`
 
