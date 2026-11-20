@@ -14,21 +14,20 @@
 
 ## 📂 Projects
 
-### 1. SongRush · 애니 OP/ED 멀티플레이 퀴즈 · 개인 프로젝트 (운영 중)
+### 1. SongRush · 애니 OP/ED 멀티플레이 퀴즈
 
-<img src="assets/songrush.svg" width="100%" alt="세 기기가 같은 순간 재생하고, 서버에 먼저 도착한 정답 1명만 득점하는 애니메이션" />
+<img src="assets/songrush.svg" width="100%" alt="기기마다 도착은 달라도 startAt에 세 기기가 함께 재생을 시작하는 애니메이션" />
 
-> 최대 8명이 **같은 순간에 같은 곡**을 듣고 애니 제목을 먼저 맞히는 실시간 게임 · **https://animeopguessr.com**
-> **AI 에이전트 팀을 직접 설계해** 혼자 기획부터 AWS 운영 배포까지 진행
+> 최대 8명이 같은 순간에 같은 곡을 듣고 애니 제목을 먼저 맞히는 실시간 게임 · [animeopguessr.com](https://animeopguessr.com)
+> **1인 개발 · AI 에이전트 팀(구현·검증·비평)을 직접 설계해 운영 배포까지**
 
 | | |
 |---|---|
-| **동시 재생** | 서버 시계 기준 시작 시각 + 오디오 엔진 예약으로 시작 오차 **2.5ms** (타이머 방식 18.9ms) |
-| **공정한 판정** | 정답·시계·점수는 서버만 보유, 방마다 단일 스레드로 **서버 도착 순 1명만** 득점 |
-| **성능 개선** | 측정으로 병목을 찾아 CloudFront 경유 + 미리 받기 → 음원 대기 **9.7초 → 2.4초** |
-| **AI 개발 체계** | 구현·검증·비평 에이전트 분리, hook으로 규칙 강제 → 커밋 949 · 사이클 기록 147 · 결정 기록 146 |
+| **문제** | 기기마다 네트워크·소리 출력 지연이 달라, 그냥 틀면 먼저 듣는 사람이 생기고 동시 정답의 승자가 갈림 |
+| **해결** | 서버가 시작 시각(`startAt`)을 정하고 각 기기는 오디오 엔진 시계에 예약 · 정답 판정은 방마다 단일 스레드에서 서버 도착 순 |
+| **결과** | 재생 시작 오차 **2.5ms** · 동시 정답도 **1명만** 득점 · CloudFront 경유와 미리 받기로 음원 대기 **9.7초 → 2.4초** |
 
-`Java 17` `Spring Boot WebSocket` `React` `Flutter` `Python` `AWS EC2·S3·CloudFront` `Docker` `GitHub Actions` `Claude Code`
+`Java 17` `Spring Boot WebSocket` `React` `Flutter` `AWS EC2·S3·CloudFront` `Docker` `GitHub Actions` `Claude Code`
 
 → [SongRushApp](https://github.com/kimdoodoo12/SongRushApp)
 
