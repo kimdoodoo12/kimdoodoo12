@@ -44,7 +44,7 @@
 </td>
 <td width="50%" valign="top">
 <h3><a href="https://github.com/kimdoodoo12/schedule_optimization">시간표 최적화</a></h3>
-<sub>개인</sub><br/><br/>
+<sub>개인 · 2025.09</sub><br/><br/>
 <a href="https://github.com/kimdoodoo12/schedule_optimization"><img src="assets/shots/thumb-schedule.png" width="100%" alt="프로그램이 만든 시간표 결과" /></a>
 <p>15~18학점 안에서 공강을 줄이는 시간표를 담금질 기법으로 찾는 프로그램</p>
 <p><code>Python</code> <code>Simulated Annealing</code></p>
