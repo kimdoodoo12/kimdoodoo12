@@ -12,16 +12,116 @@
   <img src="https://skillicons.dev/icons?i=java,spring,py,django,react,js,flutter,dart,mysql,redis,aws,docker,nginx,git,githubactions&theme=dark" alt="tech stack" />
 </p>
 
+<a name="projects"></a>
+
 ## 📂 Projects
 
 <p align="center">
-  <a href="projects/songrush.md"><img src="assets/card-songrush.svg" width="49%" alt="SongRush · 애니 OP/ED 멀티플레이 퀴즈" /></a>
-  <a href="projects/english-inssa.md"><img src="assets/card-english-inssa.svg" width="49%" alt="English INSSA · 영어 슬랭 데이터 파이프라인" /></a>
-  <a href="projects/ieum-auction.md"><img src="assets/card-ieum-auction.svg" width="49%" alt="이음 옥션 · 사회적 가치 상품 경매 플랫폼" /></a>
-  <a href="projects/schedule.md"><img src="assets/card-schedule.svg" width="49%" alt="시간표 최적화 · Simulated Annealing" /></a>
+  <a href="#songrush"><img src="assets/card-songrush.svg" width="49%" alt="SongRush · 애니 OP/ED 멀티플레이 퀴즈" /></a>
+  <a href="#english-inssa"><img src="assets/card-english-inssa.svg" width="49%" alt="English INSSA · 영어 슬랭 데이터 파이프라인" /></a>
+  <a href="#ieum-auction"><img src="assets/card-ieum-auction.svg" width="49%" alt="이음 옥션 · 사회적 가치 상품 경매 플랫폼" /></a>
+  <a href="#schedule"><img src="assets/card-schedule.svg" width="49%" alt="시간표 최적화 · Simulated Annealing" /></a>
 </p>
 
-<sub>카드를 누르면 프로젝트 소개와 저장소 링크로 이동합니다.</sub>
+<sub>카드를 누르면 아래 프로젝트 소개로 이동하고, 소개 맨 위 배지로 저장소에 갈 수 있습니다.</sub>
+
+<a name="songrush"></a>
+
+### 1. SongRush · 애니 OP/ED 멀티플레이 퀴즈
+
+<a href="https://github.com/kimdoodoo12/SongRushApp"><img src="https://img.shields.io/badge/GitHub-SongRushApp-181717?style=for-the-badge&logo=github" alt="저장소" /></a> <a href="https://animeopguessr.com"><img src="https://img.shields.io/badge/Live-animeopguessr.com-ff8a4c?style=for-the-badge" alt="서비스" /></a>
+
+<img src="assets/songrush.svg" width="100%" alt="레코드가 돌고, 채팅 오답 끝에 한 명이 정답을 맞혀 정답 카드가 뜨는 게임 한 판 애니메이션" />
+
+> 최대 8명이 같은 순간에 같은 곡을 듣고 애니 제목을 먼저 맞히는 실시간 게임 · [animeopguessr.com](https://animeopguessr.com)
+> **1인 개발 · AI 에이전트 팀(구현·검증·비평)을 직접 설계해 운영 배포까지**
+
+| | |
+|---|---|
+| **문제** | 기기마다 네트워크·소리 출력 지연이 달라, 그냥 틀면 먼저 듣는 사람이 생기고 동시 정답의 승자가 갈림 |
+| **해결** | 서버가 시작 시각(`startAt`)을 정하고 각 기기는 오디오 엔진 시계에 예약 · 정답 판정은 방마다 단일 스레드에서 서버 도착 순 |
+| **결과** | 재생 시작 오차 **2.5ms** · 동시 정답도 **1명만** 득점 · CloudFront 경유와 미리 받기로 음원 대기 **9.7초 → 2.4초** |
+
+`Java 17` `Spring Boot WebSocket` `React` `Flutter` `AWS EC2·S3·CloudFront` `Docker` `GitHub Actions` `Claude Code`
+
+<sub><a href="#projects">↑ 프로젝트 목록으로</a></sub>
+
+---
+
+<a name="english-inssa"></a>
+
+### 2. English INSSA Slang Data Pipeline · 졸업 작품
+
+<a href="https://github.com/kimdoodoo12/english-inssa-data-pipeline"><img src="https://img.shields.io/badge/GitHub-english--inssa--data--pipeline-181717?style=for-the-badge&logo=github" alt="저장소" /></a>
+
+<img src="assets/funnel.svg" width="100%" alt="슬랭 후보가 필터를 거쳐 걸러지는 파이프라인 애니메이션" />
+
+> 사전에 등록된 슬랭 중 **실제로 쓰이는 것만** 골라 영어 학습 서비스용 데이터셋으로 만드는 파이프라인
+> 팀 졸업 작품 중 **`data_pipeline/` 전체를 단독 설계·구현**
+
+| | |
+|---|---|
+| **문제** | Wiktionary 슬랭 목록에는 아무도 쓰지 않는 단어가 섞여 있어 그대로 서비스에 쓸 수 없음 |
+| **해결** | Wiktionary 슬랭 라벨 추출 → Reddit 댓글 2개월치로 사용량 점수화 → 문맥 샘플링 → LLM 판정 → 우선순위 점수 → 사람 검수 |
+| **결과** | 슬랭 표제어 **33,009** → 사용량 점수화 **6,423** → LLM 판정 **3,293** → 사람 검수 **384개** 서비스 승인 |
+
+**설계 포인트**
+- **대용량 스트리밍** — bz2(Wiktionary)·zstd(Reddit) 덤프를 메모리에 올리지 않고 스트리밍 처리
+- **사용량 점수화(직접 설계)** — 후보를 n-gram 인덱스로 Reddit 댓글 전체에 한 번에 대조해 댓글 수·등장 subreddit 수를 세고, 로그 가중합(0.6/0.4)으로 점수화해 33,009개를 6,423개로 압축. 컷은 실제 쓰이는 슬랭들의 점수를 기준으로 설정
+- **Reservoir Sampling** — 한 번의 순회로 단어별 문맥 표본 추출, 시드 고정으로 재현 가능
+- **LLM 조기 종료** — 첫 60개 문맥에서 슬랭 판정이 0건이면 즉시 탈락 → 후보의 48%(3,085개)를 추가 호출 없이 정리
+  예: `money`는 사전에 슬랭 뜻이 있지만 60개 문맥에서 슬랭 용법이 0건이라 탈락
+- **진행분 저장** — LLM 판정 결과를 단어 단위로 즉시 저장하고, 재실행 시 이미 탈락한 단어는 다시 판정하지 않음
+- **품질 게이트** — 품질 리포트로 승인 데이터의 카테고리 불일치 **54.4%**를 발견해 전체 재분류·동기화. `pytest` 43개 + CI에서 리포트 실패 시 머지 차단
+
+`Python 3.12` `OpenAI API (gpt-4.1-nano, JSON mode)` `zstandard` `mwparserfromhell` `pytest` `GitHub Actions`
+
+<sub><a href="#projects">↑ 프로젝트 목록으로</a></sub>
+
+---
+
+<a name="ieum-auction"></a>
+
+### 3. 이음 옥션 · 사회적 가치 상품 경매 플랫폼
+
+<a href="https://github.com/kimdoodoo12/social-auction-platform"><img src="https://img.shields.io/badge/GitHub-social--auction--platform-181717?style=for-the-badge&logo=github" alt="저장소" /></a>
+
+<img src="assets/auction.svg" width="100%" alt="첫 입찰부터 낙찰까지 경매 흐름 애니메이션" />
+
+> 장애인·사회적 약자가 만든 상품을 기관과 협약해 경매로 판매하는 서비스
+> **4인 팀 프로젝트 · 팀장**
+
+| | |
+|---|---|
+| **내 역할** | **팀장 · 프로젝트 총괄** — 기획, 일정·스프린트 관리, 업무 분배 |
+| **경매 규칙** | 시작 시각 없이 *첫 입찰 순간부터* 24시간 카운트다운, 종료 시 최고 입찰자 낙찰 |
+| **팀 아키텍처** | SSE로 현재가 실시간 방송 · 경매별 입찰 큐로 동시 입찰 순서 보장 · JWT + Redis 리프레시 토큰 |
+
+`Java 17` `Spring Boot` `JPA` `Redis` `React` `MySQL`
+
+<sub><a href="#projects">↑ 프로젝트 목록으로</a></sub>
+
+---
+
+<a name="schedule"></a>
+
+### 4. 대학 시간표 최적화 · Simulated Annealing
+
+<a href="https://github.com/kimdoodoo12/schedule_optimization"><img src="https://img.shields.io/badge/GitHub-schedule__optimization-181717?style=for-the-badge&logo=github" alt="저장소" /></a>
+
+<img src="assets/annealing.svg" width="100%" alt="담금질 기법으로 최저점을 찾아가는 애니메이션" />
+
+> 15~18학점 제약 안에서 **공강은 줄이고 하루 수업은 고르게** 배치하는 시간표 자동 생성
+
+- 겹치지 않는 랜덤 시간표에서 시작해 강의 하나를 빼고 충돌 없는 강의로 교체하며 탐색
+- 온도가 높을 때는 나쁜 해도 확률적으로 받아들여 **지역 최솟값 탈출**
+- 위 애니메이션의 공 경로도 실제 담금질 알고리즘을 돌려 나온 경로
+
+`Python`
+
+<sub><a href="#projects">↑ 프로젝트 목록으로</a></sub>
+
+---
 
 ### 그 밖의 프로젝트
 

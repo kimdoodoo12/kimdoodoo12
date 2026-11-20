@@ -174,7 +174,7 @@ def card(c):
   <text x="22" y="68" font-size="24" font-weight="800" fill="#f8fafc" font-family="{SANS}">{name}</text>
   <text x="22" y="94" font-size="14" fill="#d6d3d1" font-family="{SANS}">{desc}</text>
   <text x="22" y="130" font-size="11" fill="{acc}" opacity="0.8">{tags}</text>
-  <text x="{W - 20}" y="130" font-size="12" fill="#f8fafc" opacity="0.7" text-anchor="end" font-family="{SANS}">자세히 →</text>
+  <text x="{W - 20}" y="130" font-size="12" fill="#f8fafc" opacity="0.7" text-anchor="end" font-family="{SANS}">자세히 ↓</text>
   {card_icon(icon, acc)}
 </svg>
 '''

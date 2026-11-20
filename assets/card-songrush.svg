@@ -6,6 +6,6 @@
   <text x="22" y="68" font-size="24" font-weight="800" fill="#f8fafc" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">SongRush</text>
   <text x="22" y="94" font-size="14" fill="#d6d3d1" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">애니 OP·ED 멀티플레이 퀴즈</text>
   <text x="22" y="130" font-size="11" fill="#ff8a4c" opacity="0.8">Spring Boot · WebSocket · React · Flutter · AWS</text>
-  <text x="380" y="130" font-size="12" fill="#f8fafc" opacity="0.7" text-anchor="end" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">자세히 →</text>
+  <text x="380" y="130" font-size="12" fill="#f8fafc" opacity="0.7" text-anchor="end" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">자세히 ↓</text>
   <g transform="translate(318 74)"><g><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/><circle r="34" fill="#120c0b" stroke="#ff8a4c" stroke-width="2"/><circle r="23" fill="none" stroke="#3a2a26"/><circle r="10" fill="#ffcf70"/><rect x="-2" y="-34" width="4" height="10" fill="#ff8a4c"/></g></g>
 </svg>

@@ -6,6 +6,6 @@
   <text x="22" y="68" font-size="24" font-weight="800" fill="#f8fafc" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">English INSSA</text>
   <text x="22" y="94" font-size="14" fill="#d6d3d1" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">영어 슬랭 데이터 파이프라인</text>
   <text x="22" y="130" font-size="11" fill="#2dd4bf" opacity="0.8">Python · OpenAI API · pytest · CI</text>
-  <text x="380" y="130" font-size="12" fill="#f8fafc" opacity="0.7" text-anchor="end" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">자세히 →</text>
+  <text x="380" y="130" font-size="12" fill="#f8fafc" opacity="0.7" text-anchor="end" font-family="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif">자세히 ↓</text>
   <polygon points="284,46 352,46 330,86 330,104 306,104 306,86" fill="#2dd4bf" fill-opacity="0.15" stroke="#2dd4bf" stroke-width="2" stroke-linejoin="round"/><circle cx="318" cy="60" r="4" fill="#2dd4bf"><animate attributeName="cy" values="52;98;98" keyTimes="0;0.7;1" dur="2.2s" repeatCount="indefinite"/></circle>
 </svg>
