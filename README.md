@@ -9,12 +9,32 @@
 ## 🛠 Tech Stack
 
 <p>
-  <img src="https://skillicons.dev/icons?i=java,spring,py,django,react,js,mysql,redis,git,githubactions&theme=dark" alt="tech stack" />
+  <img src="https://skillicons.dev/icons?i=java,spring,py,django,react,js,flutter,dart,mysql,redis,aws,docker,nginx,git,githubactions&theme=dark" alt="tech stack" />
 </p>
 
 ## 📂 Projects
 
-### 1. English INSSA Slang Data Pipeline · 졸업 작품
+### 1. SongRush · 애니 OP/ED 멀티플레이 퀴즈 · 개인 프로젝트 (운영 중)
+
+<img src="assets/songrush.svg" width="100%" alt="세 기기가 같은 순간 재생하고, 서버에 먼저 도착한 정답 1명만 득점하는 애니메이션" />
+
+> 최대 8명이 **같은 순간에 같은 곡**을 듣고 애니 제목을 먼저 맞히는 실시간 게임 · **https://animeopguessr.com**
+> **AI 에이전트 팀을 직접 설계해** 혼자 기획부터 AWS 운영 배포까지 진행
+
+| | |
+|---|---|
+| **동시 재생** | 서버 시계 기준 시작 시각 + 오디오 엔진 예약으로 시작 오차 **2.5ms** (타이머 방식 18.9ms) |
+| **공정한 판정** | 정답·시계·점수는 서버만 보유, 방마다 단일 스레드로 **서버 도착 순 1명만** 득점 |
+| **성능 개선** | 측정으로 병목을 찾아 CloudFront 경유 + 미리 받기 → 음원 대기 **9.7초 → 2.4초** |
+| **AI 개발 체계** | 구현·검증·비평 에이전트 분리, hook으로 규칙 강제 → 커밋 949 · 사이클 기록 147 · 결정 기록 146 |
+
+`Java 17` `Spring Boot WebSocket` `React` `Flutter` `Python` `AWS EC2·S3·CloudFront` `Docker` `GitHub Actions` `Claude Code`
+
+→ [SongRushApp](https://github.com/kimdoodoo12/SongRushApp)
+
+---
+
+### 2. English INSSA Slang Data Pipeline · 졸업 작품
 
 <img src="assets/funnel.svg" width="100%" alt="슬랭 후보가 필터를 거쳐 걸러지는 파이프라인 애니메이션" />
 
@@ -42,7 +62,7 @@
 
 ---
 
-### 2. 이음 옥션 · 사회적 가치 상품 경매 플랫폼
+### 3. 이음 옥션 · 사회적 가치 상품 경매 플랫폼
 
 <img src="assets/auction.svg" width="100%" alt="첫 입찰부터 낙찰까지 경매 흐름 애니메이션" />
 
@@ -61,7 +81,7 @@
 
 ---
 
-### 3. 대학 시간표 최적화 · Simulated Annealing
+### 4. 대학 시간표 최적화 · Simulated Annealing
 
 <img src="assets/annealing.svg" width="100%" alt="담금질 기법으로 최저점을 찾아가는 애니메이션" />
 

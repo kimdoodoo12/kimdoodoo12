@@ -41,6 +41,93 @@ def text_width(s, fs):
     return w
 
 
+# ---------------------------------------------------------------- songrush (same moment, first arrival wins)
+def songrush():
+    W, H, D = 800, 330, 10
+    PLAY = 2.6          # startAt: every client starts here
+    SX, SY = 140, 190   # server centre
+    players = [("PC", 330, "#38bdf8", 0.55, 40), ("폰 A", 480, "#f472b6", 1.15, 120), ("폰 B", 630, "#a3e635", 0.85, 80)]
+    PY, PW, PH = 110, 130, 150
+    win, late = 1, 0            # 폰 A wins, PC arrives a moment later
+    sends = {1: 5.0, 0: 5.05}   # chat sent
+    arrive = {1: 5.55, 0: 5.6}  # reaches the server
+    END = D - 0.4
+
+    def travel(x0, y0, x1, y1, t0, t1, color, r=5):
+        k = kt(0, t0 / D, t1 / D, 1)
+        return (f'<circle r="{r}" fill="{color}" opacity="0">'
+                f'<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="{kt(0, t0 / D, t1 / D)}" dur="{D}s" repeatCount="indefinite"/>'
+                f'<animate attributeName="cx" values="{x0};{x0};{x1};{x1}" keyTimes="{k}" dur="{D}s" repeatCount="indefinite"/>'
+                f'<animate attributeName="cy" values="{y0};{y0};{y1};{y1}" keyTimes="{k}" dur="{D}s" repeatCount="indefinite"/></circle>')
+
+    def pill(x, y, w, fill, text, color, fs=13, bold=True):
+        weight = ' font-weight="700"' if bold else ""
+        return (f'<rect x="{x}" y="{y}" width="{w}" height="26" rx="13" fill="{fill}"/>'
+                f'<text x="{x + w / 2}" y="{y + 18}" font-size="{fs}"{weight} fill="{color}" text-anchor="middle" font-family="{SANS}">{text}</text>')
+
+    parts = []
+    for i, (name, x, color, lag, ms) in enumerate(players):
+        bars = []
+        for b in range(9):
+            hs = [6 + ((b * 7 + j * 5) % 26) for j in range(6)]
+            hv = ";".join(str(h) for h in hs + hs[:1])
+            yv = ";".join(str(PY + 104 - h) for h in hs + hs[:1])
+            d = f"{0.9 + b * 0.07:.2f}s"
+            bars.append(f'<rect x="{x + 16 + b * 11}" y="{PY + 94}" width="7" height="10" rx="2" fill="{color}">'
+                        f'<animate attributeName="height" values="{hv}" dur="{d}" repeatCount="indefinite"/>'
+                        f'<animate attributeName="y" values="{yv}" dur="{d}" repeatCount="indefinite"/></rect>')
+        parts.append(f'''
+  <rect x="{x}" y="{PY}" width="{PW}" height="{PH}" rx="14" fill="#2a1624" stroke="{color}" stroke-opacity="0.6"/>
+  <text x="{x + 14}" y="{PY + 26}" font-size="14" font-weight="700" fill="{color}" font-family="{SANS}">{name}</text>
+  <text x="{x + PW - 14}" y="{PY + 26}" font-size="11" fill="#8b6f78" text-anchor="end">지연 {ms}ms</text>
+  <g opacity="0">{visible(lag, PLAY, D)}<text x="{x + PW / 2}" y="{PY + 90}" font-size="12" fill="#c4a3a8" text-anchor="middle" font-family="{SANS}">준비 완료 · 대기</text></g>
+  <g opacity="0">{visible(PLAY, END, D)}{"".join(bars)}</g>''')
+        parts.append(travel(SX + 70, SY - 20, x + 10, PY + 40, 0.1, lag, "#ffcf70"))
+        if i in sends:
+            parts.append(f'<g opacity="0">{visible(sends[i], END, D)}{pill(x + 12, PY + 114, PW - 24, "#3a1f30", "나루토", "#fff1e6", bold=False)}</g>')
+            parts.append(travel(x + 10, PY + 127, SX + 70, SY + 30, sends[i], arrive[i], color, 6))
+        if i == win:
+            parts.append(f'<g opacity="0">{visible(arrive[i] + 0.25, END, D)}{pill(x + 18, PY - 14, PW - 36, "#22c55e", "✔ 정답 +1", "#052e16")}</g>')
+        elif i == late:
+            parts.append(f'<g opacity="0">{visible(arrive[i] + 0.25, END, D)}{pill(x + 18, PY - 14, PW - 36, "#57534e", "한발 늦음", "#e7e5e4", 12, False)}</g>')
+
+    vinyl = f'''
+  <g transform="translate({SX} {SY - 6})">
+    <g><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"/>
+      <circle r="38" fill="#1c0f1a" stroke="#ff8a4c" stroke-width="2"/>
+      <circle r="27" fill="none" stroke="#4a2a3c"/><circle r="18" fill="none" stroke="#4a2a3c"/>
+      <circle r="10" fill="#ffcf70"/><rect x="-2" y="-38" width="4" height="12" fill="#ff8a4c"/>
+    </g>
+  </g>'''
+    flash = (f'<g opacity="0">{visible(PLAY, arrive[1] + 0.25, D)}'
+             f'<rect x="318" y="272" width="454" height="30" rx="15" fill="#ff8a4c" fill-opacity="0.15" stroke="#ff8a4c"/>'
+             f'<text x="545" y="292" font-size="14" font-weight="700" fill="#ffcf70" text-anchor="middle" font-family="{SANS}">▶ startAt 도달 · 세 기기가 같은 순간 재생 (오차 2.5ms)</text></g>')
+    note = (f'<g opacity="0">{visible(arrive[1] + 0.25, END, D)}'
+            f'<rect x="318" y="272" width="454" height="30" rx="15" fill="#22c55e" fill-opacity="0.12" stroke="#22c55e"/>'
+            f'<text x="545" y="292" font-size="14" font-weight="700" fill="#9ff0a8" text-anchor="middle" font-family="{SANS}">거의 동시에 쳐도 서버에 먼저 도착한 1명만 득점</text></g>')
+    queue = (f'<g opacity="0">{visible(arrive[1], END, D)}<text x="{SX - 64}" y="{SY + 64}" font-size="12" fill="#f472b6">#1 폰 A  ✔</text></g>'
+             f'<g opacity="0">{visible(arrive[0], END, D)}<text x="{SX - 64}" y="{SY + 82}" font-size="12" fill="#38bdf8">#2 PC   <tspan fill="#8b6f78">늦음</tspan></text></g>')
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="{MONO}">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a0b16"/><stop offset="1" stop-color="#3b1430"/></linearGradient>
+  </defs>
+  <rect width="{W}" height="{H}" rx="18" fill="url(#bg)"/>
+  <text x="28" y="38" font-size="15" fill="#ffcf70">SongRushApp / 애니 OP·ED 멀티플레이 퀴즈</text>
+  <text x="28" y="60" font-size="13" fill="#c4a3a8" font-family="{SANS}">지연이 달라도 같은 순간에 재생 · 정답·시계·점수는 서버가 · 도착 순으로 1명만 득점</text>
+
+  <rect x="{SX - 80}" y="{SY - 76}" width="160" height="176" rx="14" fill="#120a10" stroke="#ff8a4c" stroke-opacity="0.7"/>
+  <text x="{SX}" y="{SY - 56}" font-size="12" fill="#ff8a4c" text-anchor="middle">Spring Boot · WebSocket</text>
+  {vinyl}
+  <text x="{SX}" y="{SY + 46}" font-size="11" fill="#c4a3a8" text-anchor="middle">startAt = 준비 + 3s</text>
+  {queue}
+  {"".join(parts)}
+  {flash}{note}
+  <text x="28" y="{H - 10}" font-size="12" fill="#c4a3a8" opacity="0.8">Spring Boot · React · Flutter · AWS EC2/S3/CloudFront · AI 에이전트 개발 (Claude Code)</text>
+</svg>
+'''
+
+
 # ---------------------------------------------------------------- header (isekai opening)
 def once(attr, frm, to, begin, dur):
     """One-shot animation that keeps its end state (plays once per page load)."""
@@ -655,6 +742,6 @@ def funnel():
 
 
 for name, fn in [("header.svg", header), ("character.svg", character), ("funnel.svg", funnel),
-                 ("annealing.svg", annealing), ("auction.svg", auction)]:
+                 ("annealing.svg", annealing), ("auction.svg", auction), ("songrush.svg", songrush)]:
     (OUT / name).write_text(fn(), encoding="utf-8")
     print("wrote", OUT / name)
