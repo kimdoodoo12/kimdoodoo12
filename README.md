@@ -38,7 +38,7 @@
 <h3><a href="https://github.com/kimdoodoo12/social-auction-platform">이음 옥션</a></h3>
 <sub>팀 4명 · 2026.09~10</sub><br/><br/>
 <a href="https://github.com/kimdoodoo12/social-auction-platform"><img src="assets/shots/thumb-ieum.png" width="100%" alt="이음 옥션 메인 화면" /></a>
-<p>취약계층이 만든 상품을 경매로 잇는 사회적 가치 플랫폼. 팀장, 경매 종료 복구·관리자 API 담당</p>
+<p>취약계층이 만든 상품을 경매로 잇는 사회적 가치 플랫폼. 팀장</p>
 <p><code>Spring Boot</code> <code>JPA</code> <code>Redis</code> <code>SSE</code> <code>React</code></p>
 <p>📂 <a href="https://github.com/kimdoodoo12/social-auction-platform">저장소</a></p>
 </td>
