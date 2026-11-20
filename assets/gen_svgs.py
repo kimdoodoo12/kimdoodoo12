@@ -131,6 +131,54 @@ def songrush():
 </svg>
 '''
 
+# ---------------------------------------------------------------- project cards (profile top)
+CARDS = [
+    ("songrush", "01", "SongRush", "애니 OP·ED 멀티플레이 퀴즈", "개인 프로젝트 · 운영 중",
+     "Spring Boot · WebSocket · React · Flutter · AWS", "#1c1412", "#2e1a16", "#ff8a4c", "record"),
+    ("english-inssa", "02", "English INSSA", "영어 슬랭 데이터 파이프라인", "졸업 작품 · 파이프라인 단독 설계",
+     "Python · OpenAI API · pytest · CI", "#052e2b", "#0f172a", "#2dd4bf", "funnel"),
+    ("ieum-auction", "03", "이음 옥션", "사회적 가치 상품 경매 플랫폼", "팀 프로젝트 4명 · 팀장",
+     "Spring Boot · JPA · Redis · SSE · React", "#1c1917", "#3b1d0f", "#fbbf24", "gavel"),
+    ("schedule", "04", "시간표 최적화", "Simulated Annealing 시간표 생성", "개인 프로젝트",
+     "Python · 담금질 기법", "#0f172a", "#1e1b4b", "#818cf8", "curve"),
+]
+
+
+def card_icon(kind, c):
+    if kind == "record":
+        return (f'<g transform="translate(318 74)"><g>'
+                f'<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>'
+                f'<circle r="34" fill="#120c0b" stroke="{c}" stroke-width="2"/><circle r="23" fill="none" stroke="#3a2a26"/>'
+                f'<circle r="10" fill="#ffcf70"/><rect x="-2" y="-34" width="4" height="10" fill="{c}"/></g></g>')
+    if kind == "funnel":
+        return (f'<polygon points="284,46 352,46 330,86 330,104 306,104 306,86" fill="{c}" fill-opacity="0.15" stroke="{c}" stroke-width="2" stroke-linejoin="round"/>'
+                f'<circle cx="318" cy="60" r="4" fill="{c}"><animate attributeName="cy" values="52;98;98" keyTimes="0;0.7;1" dur="2.2s" repeatCount="indefinite"/></circle>')
+    if kind == "gavel":
+        return (f'<g transform="translate(318 96)"><g>'
+                f'<animateTransform attributeName="transform" type="rotate" values="0;-28;6;0;0" keyTimes="0;0.3;0.42;0.5;1" dur="2.4s" repeatCount="indefinite"/>'
+                f'<rect x="-5" y="-62" width="10" height="52" rx="4" fill="#a16207" transform="rotate(-40)"/>'
+                f'<rect x="-24" y="-84" width="48" height="24" rx="6" fill="{c}" transform="rotate(-40)"/></g>'
+                f'<rect x="-34" y="0" width="68" height="10" rx="4" fill="#57534e"/></g>')
+    return (f'<path d="M276 70 C292 40 300 96 316 84 S338 44 360 76" fill="none" stroke="{c}" stroke-width="2.5"/>'
+            f'<circle r="5" fill="#fbbf24"><animateMotion dur="3s" repeatCount="indefinite" path="M276 70 C292 40 300 96 316 84 S338 44 360 76"/></circle>')
+
+
+def card(c):
+    slug, no, name, desc, meta, tags, b0, b1, acc, icon = c
+    W, H = 400, 150
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="{MONO}">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{b0}"/><stop offset="1" stop-color="{b1}"/></linearGradient></defs>
+  <rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="16" fill="url(#bg)" stroke="{acc}" stroke-opacity="0.35"/>
+  <text x="22" y="32" font-size="12" fill="{acc}" opacity="0.85">{no}</text>
+  <text x="44" y="32" font-size="12" fill="#a8a29e" font-family="{SANS}">{meta}</text>
+  <text x="22" y="68" font-size="24" font-weight="800" fill="#f8fafc" font-family="{SANS}">{name}</text>
+  <text x="22" y="94" font-size="14" fill="#d6d3d1" font-family="{SANS}">{desc}</text>
+  <text x="22" y="130" font-size="11" fill="{acc}" opacity="0.8">{tags}</text>
+  <text x="{W - 20}" y="130" font-size="12" fill="#f8fafc" opacity="0.7" text-anchor="end" font-family="{SANS}">자세히 →</text>
+  {card_icon(icon, acc)}
+</svg>
+'''
+
 # ---------------------------------------------------------------- header (isekai opening)
 def once(attr, frm, to, begin, dur):
     """One-shot animation that keeps its end state (plays once per page load)."""
@@ -748,3 +796,7 @@ for name, fn in [("header.svg", header), ("character.svg", character), ("funnel.
                  ("annealing.svg", annealing), ("auction.svg", auction), ("songrush.svg", songrush)]:
     (OUT / name).write_text(fn(), encoding="utf-8")
     print("wrote", OUT / name)
+
+for c in CARDS:
+    (OUT / f"card-{c[0]}.svg").write_text(card(c), encoding="utf-8")
+    print("wrote", OUT / f"card-{c[0]}.svg")
