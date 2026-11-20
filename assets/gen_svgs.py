@@ -41,54 +41,93 @@ def text_width(s, fs):
     return w
 
 
-# ---------------------------------------------------------------- songrush (same startAt for every device)
+# ---------------------------------------------------------------- songrush (one song: listen, guess, reveal)
 def songrush():
     W, H, D = 800, 320, 10
-    X0, X1, SA = 120, 760, 340          # lane start, lane end, startAt line
-    PLAY, FULL, WIN = 2.4, 7.6, 6.2     # play starts, wave reaches the end, correct answer
-    lanes = [("PC", 128, 0.5, 170), ("폰 A", 186, 1.3, 285), ("폰 B", 244, 0.9, 225)]
+    WIN, REVEAL = 5.2, 5.8
+    RX, RY = 200, 186           # record centre
 
-    pts = []
-    for i in range(0, X1 - SA + 1, 4):
-        y = 13 * math.sin(i / 9) * (0.55 + 0.45 * math.sin(i / 37)) + 3 * math.sin(i / 4.3)
-        pts.append(f"{i},{y:.1f}")
-    wave = "M" + " L".join(pts)
-
-    grow = kt(0, PLAY / D, FULL / D, 1)
-    width = X1 - SA
-    rows = []
-    for name, y, t, ax in lanes:
-        rows.append(f'''
-  <text x="40" y="{y + 5}" font-size="14" fill="#fed7aa" font-family="{SANS}">{name}</text>
-  <line x1="{X0}" y1="{y}" x2="{X1}" y2="{y}" stroke="#fdba74" stroke-opacity="0.15"/>
+    chats = [(0.9, "민수", "#38bdf8", "진격의 거인?", False),
+             (2.1, "지수", "#f472b6", "원피스", False),
+             (3.3, "민수", "#38bdf8", "귀멸의 칼날", False),
+             (4.7, "두두", "#a3e635", "나루토", True)]
+    lines = []
+    for k, (t, who, color, msg, ok) in enumerate(chats):
+        y = 120 + k * 32
+        mark = "" if ok else (f'<g opacity="0">{visible(t + 0.35, D, D)}'
+                              f'<text x="736" y="{y}" font-size="14" fill="#f87171" text-anchor="end">✗</text></g>')
+        lines.append(f'''
   <g opacity="0">{visible(t, D, D)}
-    <circle cx="{ax}" cy="{y}" r="5" fill="#fdba74"/>
-    <text x="{ax}" y="{y - 12}" font-size="11" fill="#fdba74" text-anchor="middle" opacity="0.8" font-family="{SANS}">도착</text>
-  </g>
-  <g opacity="0">{visible(t, PLAY, D)}<text x="{(ax + SA) / 2:.0f}" y="{y + 20}" font-size="11" fill="#a8a29e" text-anchor="middle" font-family="{SANS}">대기</text></g>
-  <g clip-path="url(#play)"><path d="{wave}" transform="translate({SA} {y})" fill="none" stroke="#ff8a4c" stroke-width="2.5" stroke-linejoin="round"/></g>''')
+    <animateTransform attributeName="transform" type="translate" values="0 8;0 8;0 0;0 0" keyTimes="{kt(0, t / D, (t + 0.2) / D, 1)}" dur="{D}s" repeatCount="indefinite"/>
+    <text x="404" y="{y}" font-size="14" font-family="{SANS}"><tspan fill="{color}" font-weight="700">{who}</tspan><tspan fill="#f5f5f4" dx="12">{msg}</tspan></text>
+  </g>{mark}''')
+    lines.append(f'''
+  <g opacity="0">{visible(WIN, D, D)}
+    <rect x="396" y="{120 + 4 * 32 - 20}" width="344" height="30" rx="15" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e"/>
+    <text x="568" y="{120 + 4 * 32}" font-size="14" font-weight="700" fill="#86efac" text-anchor="middle" font-family="{SANS}">✔ 두두 정답! · 서버에 먼저 도착한 1명만 득점</text>
+  </g>''')
+
+    notes = []
+    for k, (dx, t) in enumerate([(-30, 0.3), (34, 1.5), (-10, 2.7), (40, 3.9)]):
+        notes.append(f'''
+  <text x="{RX + dx}" y="{RY - 50}" font-size="18" fill="#ffcf70" text-anchor="middle" opacity="0">♪
+    <animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="{kt(0, t / D, (t + 0.3) / D, (t + 1.6) / D, 1)}" dur="{D}s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -28;0 -28" keyTimes="{kt(0, t / D, (t + 1.6) / D, 1)}" dur="{D}s" repeatCount="indefinite"/>
+  </text>''')
+
+    secs = [(0, "90"), (1.2, "78"), (2.4, "66"), (3.6, "54"), (4.8, "42")]
+    sec_svg = "".join(
+        f'<g opacity="0">{visible(t, secs[k + 1][0] if k + 1 < len(secs) else D, D)}'
+        f'<text x="330" y="112" font-size="14" font-weight="700" fill="#fed7aa" text-anchor="end">{v}초</text></g>'
+        for k, (t, v) in enumerate(secs))
+
+    cover = f'''
+  <g transform="translate({RX} {RY + 10})"><g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="{kt(0, REVEAL / D, (REVEAL + 0.25) / D, 1)}" dur="{D}s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="scale" values="0.6;0.6;1.08;1;1" keyTimes="{kt(0, REVEAL / D, (REVEAL + 0.25) / D, (REVEAL + 0.4) / D, 1)}" dur="{D}s" repeatCount="indefinite"/>
+    <rect x="-118" y="-68" width="236" height="136" rx="12" fill="#1c1412" stroke="#ffcf70" stroke-width="2"/>
+    <rect x="-104" y="-54" width="80" height="108" rx="6" fill="#ff8a4c"/>
+    <circle cx="-48" cy="-28" r="14" fill="#fff7ed"/>
+    <path d="M-104 54 L-80 10 L-62 32 L-44 4 L-24 54 Z" fill="#1c1412" opacity="0.75"/>
+    <rect x="-8" y="-46" width="58" height="18" rx="9" fill="#ff8a4c"/><text x="21" y="-33" font-size="11" font-weight="700" fill="#1c1412" text-anchor="middle" font-family="{SANS}">정답</text>
+    <text x="-8" y="-4" font-size="22" font-weight="800" fill="#fff7ed" font-family="{SANS}">나루토</text>
+    <text x="-8" y="18" font-size="12" fill="#d6d3d1">NARUTO</text>
+    <text x="-8" y="44" font-size="11" fill="#a8a29e" font-family="{SANS}">OP 1 · 한·영·일·로마자</text>
+  </g></g>'''
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="{MONO}">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c1412"/><stop offset="1" stop-color="#2a1718"/></linearGradient>
-    <clipPath id="play"><rect x="{SA}" y="0" width="0" height="{H}">
-      <animate attributeName="width" values="0;0;{width};{width}" keyTimes="{grow}" dur="{D}s" repeatCount="indefinite"/>
-    </rect></clipPath>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c1412"/><stop offset="1" stop-color="#2e1a16"/></linearGradient>
   </defs>
   <rect width="{W}" height="{H}" rx="18" fill="url(#bg)"/>
-  <text x="28" y="38" font-size="15" fill="#fed7aa">SongRushApp / 같은 순간, 같은 노래</text>
-  <text x="28" y="62" font-size="13" fill="#fdba74" opacity="0.7" font-family="{SANS}">기기마다 도착은 달라도, 서버가 정한 startAt에 모두 함께 재생</text>
+  <text x="28" y="38" font-size="15" fill="#fed7aa">SongRushApp / 애니 OP·ED 맞히기</text>
+  <text x="28" y="62" font-size="13" fill="#fdba74" opacity="0.75" font-family="{SANS}">모두가 같은 순간에 듣고 · 서버에 먼저 도착한 정답만 득점 · AI 에이전트 팀으로 개발</text>
 
-  <line x1="{SA}" y1="96" x2="{SA}" y2="262" stroke="#ffcf70" stroke-dasharray="4 4"/>
-  <text x="{SA}" y="90" font-size="12" fill="#ffcf70" text-anchor="middle">startAt</text>
-  {"".join(rows)}
-
-  <g opacity="0">{visible(WIN, D, D)}
-    <rect x="652" y="{lanes[1][1] - 40}" width="96" height="24" rx="12" fill="#22c55e" fill-opacity="0.18" stroke="#22c55e"/>
-    <text x="700" y="{lanes[1][1] - 23}" font-size="12" font-weight="700" fill="#86efac" text-anchor="middle" font-family="{SANS}">✔ 정답 1등</text>
+  <!-- player -->
+  <rect x="50" y="84" width="300" height="206" rx="16" fill="#292120" stroke="#44342f"/>
+  <text x="70" y="112" font-size="14" font-weight="700" fill="#fed7aa">1 / 10</text>
+  <rect x="140" y="104" width="150" height="6" rx="3" fill="#44342f"/>
+  <rect x="140" y="104" width="150" height="6" rx="3" fill="#ff8a4c">
+    <animate attributeName="width" values="150;150;80;80" keyTimes="{kt(0, 0.01, WIN / D, 1)}" dur="{D}s" repeatCount="indefinite"/>
+  </rect>
+  {sec_svg}
+  <g transform="translate({RX} {RY})">
+    <g><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="2.4s" repeatCount="indefinite"/>
+      <circle r="62" fill="#120c0b" stroke="#ff8a4c" stroke-width="2"/>
+      <circle r="46" fill="none" stroke="#3a2a26"/><circle r="32" fill="none" stroke="#3a2a26"/>
+      <circle r="18" fill="#ffcf70"/><circle r="4" fill="#120c0b"/>
+      <rect x="-3" y="-62" width="6" height="16" rx="2" fill="#ff8a4c"/>
+    </g>
   </g>
+  <path d="M318 126 L300 150 L262 206" fill="none" stroke="#a8a29e" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="318" cy="126" r="7" fill="#57534e"/>
+  {"".join(notes)}
+  {cover}
 
-  <text x="28" y="{H - 16}" font-size="12" fill="#fdba74" opacity="0.6">startAt = ready + 3s · scheduled on the audio clock (오차 2.5ms) · first arrival wins</text>
+  <!-- chat -->
+  <rect x="380" y="84" width="380" height="206" rx="16" fill="#241b1a" stroke="#44342f"/>
+  <text x="740" y="104" font-size="11" fill="#78716c" text-anchor="end" font-family="{SANS}">채팅으로 제목 맞히기</text>
+  {"".join(lines)}
 </svg>
 '''
 

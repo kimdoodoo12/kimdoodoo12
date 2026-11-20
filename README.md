@@ -16,7 +16,7 @@
 
 ### 1. SongRush · 애니 OP/ED 멀티플레이 퀴즈
 
-<img src="assets/songrush.svg" width="100%" alt="기기마다 도착은 달라도 startAt에 세 기기가 함께 재생을 시작하는 애니메이션" />
+<img src="assets/songrush.svg" width="100%" alt="레코드가 돌고, 채팅 오답 끝에 한 명이 정답을 맞혀 정답 카드가 뜨는 게임 한 판 애니메이션" />
 
 > 최대 8명이 같은 순간에 같은 곡을 듣고 애니 제목을 먼저 맞히는 실시간 게임 · [animeopguessr.com](https://animeopguessr.com)
 > **1인 개발 · AI 에이전트 팀(구현·검증·비평)을 직접 설계해 운영 배포까지**
